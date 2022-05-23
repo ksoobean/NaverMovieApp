@@ -1,19 +1,17 @@
 //
-//  ViewController.swift
+//  SearchMovieListController.swift
 //  AnchoreerTest
 //
 //  Created by 김수빈 on 2022/05/23.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class SearchMovieListController: UITableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
 }
-
