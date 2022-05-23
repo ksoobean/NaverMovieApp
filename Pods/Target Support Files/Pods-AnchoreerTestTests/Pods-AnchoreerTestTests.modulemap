@@ -1,0 +1,6 @@
+framework module Pods_AnchoreerTestTests {
+  umbrella header "Pods-AnchoreerTestTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
