@@ -37,40 +37,6 @@
             </objects>
             <point key="canvasLocation" x="436" y="832"/>
         </scene>
-        <!--Movie Detail View Controller-->
-        <scene sceneID="yap-yy-CmH">
-            <objects>
-                <viewController storyboardIdentifier="MovieDetailViewController" id="eXW-H2-vpK" customClass="MovieDetailViewController" customModule="AnchoreerTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nH5-7J-5Uj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="yIN-Va-vMh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="V7M-HH-mnR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jsg-Fh-e5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3301.449275362319" y="116.51785714285714"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="TWP-V7-8mu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jIs-9L-Ruc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R7v-Xw-Ujb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eXW-H2-vpK" kind="relationship" relationship="rootViewController" id="gQw-AL-qnO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7xY-sX-iqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2388.4057971014495" y="116.51785714285714"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jde-OB-bWe">
             <objects>
