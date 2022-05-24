@@ -53,6 +53,8 @@ class SearchMovieListController: UIViewController {
     /// 테이블뷰 셋팅
     private func configureTableView() {
         
+        self.tableView.register(MovieListCell.self, forCellReuseIdentifier: MovieListCell.identifier)
+        
         self.tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
