@@ -22,5 +22,5 @@ struct Movie: Decodable {
     let director: String?
     let actor: String?
     let userRating: String?
-    
+    let link: String?
 }

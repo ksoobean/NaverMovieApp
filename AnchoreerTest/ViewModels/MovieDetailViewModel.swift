@@ -8,3 +8,13 @@
 import Foundation
 
 
+class MovieDetailViewModel {
+    
+    let movieInfo: MovieViewModel
+    let link: String
+    
+    init(infoVM: MovieViewModel) {
+        self.movieInfo = infoVM
+        self.link = infoVM.link
+    }
+}

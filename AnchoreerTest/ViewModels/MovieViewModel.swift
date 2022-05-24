@@ -93,4 +93,8 @@ extension MovieViewModel {
     var posterImageUrl: String {
         return movie.image ?? ""
     }
+    
+    var link: String {
+        return movie.link ?? ""
+    }
 }

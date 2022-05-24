@@ -25,6 +25,8 @@ class SearchMovieListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
+        
         self.configureNavi()
         self.configureSearchBar()
         self.configureTableView()
@@ -91,12 +93,10 @@ class SearchMovieListController: UIViewController {
         Observable
             .zip(self.tableView.rx.modelSelected(MovieViewModel.self),
                  self.tableView.rx.itemSelected)
-            .subscribe(onNext: { [weak self] (user, indexPath) in
+            .subscribe(onNext: { [weak self] (movie, indexPath) in
                 self?.tableView.deselectRow(at: indexPath, animated: false)
                 
-                guard let detailVC = self?.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else {
-                    return
-                }
+                let detailVC = MovieDetailViewController(MovieDetailViewModel(infoVM: movie))
                 
                 self?.navigationController?.pushViewController(detailVC, animated: true)
                 
