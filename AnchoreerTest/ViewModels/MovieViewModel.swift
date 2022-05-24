@@ -27,11 +27,6 @@ class MovieListViewModel {
     /// 추가 조회 가능여부
     var hasMoreItemstoRequest: Bool = false
     
-    init() {
-        
-        
-    }
-    
 }
 
 extension MovieListViewModel {
@@ -80,19 +75,19 @@ struct MovieViewModel {
 extension MovieViewModel {
     
     var movieTitle: String {
-        return movie.title ?? ""
+        return movie.title?.removeHTMLTag ?? ""
     }
     
     var movieDirector: String {
-        return movie.director ?? ""
+        return "감독: \((movie.director ?? "").setPeopleList)"
     }
     
     var movieActors: String {
-        return movie.actor ?? ""
+        return "출연: \((movie.actor ?? "").setPeopleList)"
     }
     
     var movieScore: String {
-        return movie.userRating ?? "0"
+        return "평점: \(movie.userRating ?? "0.0")"
     }
     
     var posterImageUrl: String {

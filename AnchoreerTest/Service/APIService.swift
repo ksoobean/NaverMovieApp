@@ -25,14 +25,11 @@ class APIService {
                           start: Int = 1,
                          completeHandler: @escaping (MovieResponse) -> Void) {
         
-        let clientID: String = "HLSeDOlKrZYbTxDwtwGx"
-        let clientKEY: String = "as1AevMOlo"
-        
-        guard let encodedTitle: String = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "https://openapi.naver.com/v1/search/movie.json?query=\(encodedTitle)&start=\(start)") else {
+        guard let url = URL.urlForMovieList(title: title, start: start) else {
             return
         }
-        let resource = Resource<MovieResponse>(url: url, clientID: clientID, clientKey: clientKEY)
+        
+        let resource = Resource<MovieResponse>(url: url)
         
         URLRequest.load(resource: resource)
             .delay(.milliseconds(50), scheduler: MainScheduler.instance)
@@ -56,33 +53,9 @@ class APIService {
         }
         
         return Observable.just(image)
+        
       }
 
 }
 
-
-
-struct Resource<T: Decodable> {
-    let url: URL
-    let clientID: String
-    let clientKey: String
-}
-
-extension URLRequest {
-    
-    static func load<T>(resource: Resource<T>) -> Observable<T> {
-        
-        return Observable.just(resource.url)
-            .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
-                
-                var request = URLRequest(url: url)
-                request.addValue(resource.clientID, forHTTPHeaderField: "X-Naver-Client-Id")
-                request.addValue(resource.clientKey, forHTTPHeaderField: "X-Naver-Client-Secret")
-                
-                return URLSession.shared.rx.response(request: request)
-            }.map { response, data -> T in
-                return try JSONDecoder().decode(T.self, from: data)
-            }
-    }
-}
 

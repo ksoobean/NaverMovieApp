@@ -95,7 +95,7 @@ class SearchMovieListController: UIViewController {
                 guard let detailVC = self?.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else {
                     return
                 }
-//                repoVC.listViewModel = RepositoryListViewModel(user.userName)
+                
                 self?.navigationController?.pushViewController(detailVC, animated: true)
                 
             }).disposed(by: disposeBag)
@@ -136,7 +136,7 @@ extension SearchMovieListController {
 extension SearchMovieListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
