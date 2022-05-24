@@ -66,10 +66,26 @@ class MovieDetailViewController: UIViewController {
         webView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
+        webView.navigationDelegate = self
+        
         guard let url = URL(string: self.viewModel.link) else {
             return
         }
         
         webView.load(URLRequest(url: url))
+        
+    }
+}
+
+//MARK: - WKNavigationDelegate
+
+extension MovieDetailViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        // link를 그대로 띄우면 컨텐츠가 나오지 않아서
+        // view width에 컨텐츠 사이즈를 강제로 맞춰주는 코드 추가
+        
+        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        webView.evaluateJavaScript(jscript)
     }
 }
