@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "570F4AEA5289CFA1D89314014C381759"
-               BuildableName = "Pods-AnchoreerTest-AnchoreerTestUITests.framework"
+               BuildableName = "Pods_AnchoreerTest_AnchoreerTestUITests.framework"
                BlueprintName = "Pods-AnchoreerTest-AnchoreerTestUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
