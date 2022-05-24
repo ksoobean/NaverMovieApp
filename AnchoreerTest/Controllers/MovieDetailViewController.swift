@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
+import WebKit
 
 class MovieDetailViewController: UIViewController {
     
     private let viewModel: MovieDetailViewModel!
     
-    private var movieInfoView = MovieInfoView()
+    private let movieInfoView = MovieInfoView()
+    private let webView = WKWebView()
     
     init(_ viewModel: MovieDetailViewModel) {
         self.viewModel = viewModel
@@ -30,6 +32,7 @@ class MovieDetailViewController: UIViewController {
         
         self.configureNavi()
         self.setMovieInfoView()
+        self.configureWebview()
     }
     
     /// 네비게이션 셋팅
@@ -51,5 +54,22 @@ class MovieDetailViewController: UIViewController {
         movieInfoView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         movieInfoView.configureData(with: self.viewModel.movieInfo)
+    }
+    
+    private func configureWebview() {
+        
+        self.view.addSubview(self.webView)
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.topAnchor.constraint(equalTo: movieInfoView.bottomAnchor,constant: 10).isActive = true
+        webView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        guard let url = URL(string: self.viewModel.link) else {
+            return
+        }
+        
+        webView.load(URLRequest(url: url))
     }
 }
