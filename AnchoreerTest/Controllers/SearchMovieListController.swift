@@ -12,10 +12,10 @@ import RxCocoa
 
 class SearchMovieListController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView: UITableView = UITableView()
     
-    let searchController = UISearchController(searchResultsController: nil)
-    var searchBar: UISearchBar { return searchController.searchBar }
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchBar: UISearchBar { return searchController.searchBar }
     
     let listViewModel = MovieListViewModel()
     let disposeBag = DisposeBag()
@@ -54,6 +54,16 @@ class SearchMovieListController: UIViewController {
     
     /// 테이블뷰 셋팅
     private func configureTableView() {
+        
+        self.view.addSubview(self.tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
         
         self.tableView.register(MovieListCell.self, forCellReuseIdentifier: MovieListCell.identifier)
         
