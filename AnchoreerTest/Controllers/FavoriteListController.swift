@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-class BookmarkListController: UITableViewController {
+class FavoriteListController: UITableViewController {
     
 }
