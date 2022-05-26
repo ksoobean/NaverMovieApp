@@ -10,7 +10,8 @@ import RxSwift
 
 class MovieInfoView: UIView {
 
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    private var movieVM: MovieViewModel!
     
     @IBOutlet weak var posterImageView: UIImageView! // 영화 포스터 사진
     @IBOutlet weak var movieTitleLabel: UILabel! // 영화제목
@@ -53,6 +54,25 @@ class MovieInfoView: UIView {
         
         scoreLabel.font = .systemFont(ofSize: 16)
         scoreLabel.textColor = .black
+        
+        bookMarkButton.setImage(UIImage(systemName: "star"), for: .normal)
+        bookMarkButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+        bookMarkButton.tintColor = .systemYellow
+        
+        // 즐겨찾기 버튼
+        bookMarkButton.rx.tap
+          .scan(false) { lastState, newState in !lastState }
+          .bind { isSelected in
+              if isSelected {
+                  self.bookMarkButton.isSelected = true
+                  Database.shared.add(item: self.movieVM)
+              } else {
+                  self.bookMarkButton.isSelected = false
+                  Database.shared.remove(item: self.movieVM)
+              }
+          }
+          .disposed(by: self.disposeBag)
+        
     }
     
     public func clearData() {
@@ -65,6 +85,8 @@ class MovieInfoView: UIView {
     }
     
     public func configureData(with vm: MovieViewModel) {
+        
+        self.movieVM = vm
         
         self.movieTitleLabel.text = vm.movieTitle
         self.directorLabel.text = vm.movieDirector

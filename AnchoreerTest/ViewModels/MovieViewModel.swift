@@ -63,9 +63,10 @@ extension MovieListViewModel {
     }
 }
 
-struct MovieViewModel {
+struct MovieViewModel: Codable {
     
-    private let movie: Movie
+    private var movie: Movie
+    
     
     init(_ movie: Movie) {
         self.movie = movie

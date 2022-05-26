@@ -31,14 +31,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
 
+    /// 앱이 시작될 때
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        // UserDefault에 즐겨찾기 리스트 빈배열 셋팅
+        Database.shared.save(items: [])
     }
 
+    /// 앱이 종료될 때
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+        // UserDefault에 저장했던 즐겨찾기 리스트 삭제
+        Database.shared.removeAll()
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

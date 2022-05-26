@@ -16,7 +16,7 @@ struct MovieResponse: Decodable {
     let errorMessage: String?
 }
 
-struct Movie: Decodable {
+struct Movie: Codable {
     let title: String?
     let image: String?
     let director: String?

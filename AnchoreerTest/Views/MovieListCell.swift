@@ -19,7 +19,6 @@ class MovieListCell: UITableViewCell {
         super.layoutSubviews()
         
         self.contentView.addSubview(infoView)
-        
         infoView.translatesAutoresizingMaskIntoConstraints = false
         
         infoView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true

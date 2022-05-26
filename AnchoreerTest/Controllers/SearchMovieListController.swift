@@ -40,6 +40,22 @@ class SearchMovieListController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = self.listViewModel.naviTitle
         
+        
+        // Navi Right Button 추가 (즐겨찾기)
+        let favListButton = UIBarButtonItem()
+        favListButton.title = "즐겨찾기"
+        favListButton.tintColor = .black
+        
+        // 네비게이션 오른쪽 버튼 액션
+        favListButton.rx.tap.subscribe(onNext: {
+            // 즐겨찾기 리스트 보여주기
+            let favList = UINavigationController(rootViewController: FavoriteListController())
+            favList.modalPresentationStyle = .fullScreen
+            self.present(favList, animated: true)
+        }).disposed(by: disposeBag)
+        
+        self.navigationItem.rightBarButtonItem = favListButton
+        
     }
     
     /// Search Bar 셋팅
